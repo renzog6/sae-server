@@ -1,6 +1,9 @@
 package ar.nex.entity.ubicacion;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -38,7 +41,8 @@ public class Localidad implements Serializable {
 
     @Column(name = "codigo_postal")
     private String codigoPostal;
-
+    
+   
     @JoinColumn(name = "provincia", referencedColumnName = "id_provincia")
     @ManyToOne
     private Provincia provincia;

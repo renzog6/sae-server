@@ -1,5 +1,10 @@
 package ar.nex.entity.empleado;
 
+import java.util.stream.Stream;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonValue;
+
 /**
  *
  * @author Renzo
@@ -10,25 +15,39 @@ public enum PersonaEstado {
     BAJA(1, "Baja"),
     OTRO(2, "Otro");
 
-    private final int value;
-    private final String estado;
+    private final int id;
+    private final String value;
 
-    private PersonaEstado(int value, String estado) {
+    private PersonaEstado(int id, String value) {
+        this.id = id;
         this.value = value;
-        this.estado = estado;
     }
 
     public int getValue() {
-        return value;
+        return id;
     }
 
     public String getNombre() {
-        return estado;
+        return value;
     }
 
     @Override
     public String toString() {
-        return estado;
+        return value;
     }
+
+    public static Stream<PersonaEstado> stream() {
+        return Stream.of(PersonaEstado.values()); 
+    }
+
+    @JsonCreator
+	public PersonaEstado decode(final String values) {		
+        return Stream.of(PersonaEstado.values()).filter(target -> target.value.equals(value)).findFirst().orElse(null);
+	}
+	
+	@JsonValue
+	public String getCode() {
+		return value;
+	}
 
 }

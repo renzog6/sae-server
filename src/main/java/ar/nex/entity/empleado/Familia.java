@@ -6,6 +6,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  *
  * @author Renzo
@@ -20,6 +23,7 @@ public class Familia extends Persona {
     @Column(name = "relacion")
     private String relacion;
 
+    @JsonManagedReference
     @JoinColumn(name = "pariente", referencedColumnName = "id_persona")
     @ManyToOne
     private Persona pariente;
@@ -78,7 +82,7 @@ public class Familia extends Persona {
 
     @Override
     public String toString() {
-        return getNombreCompleto() + " - " + relacion;
+        return getApellido() + " - " + relacion;
     }
 
 }

@@ -2,6 +2,9 @@ package ar.nex.entity.empleado;
 
 import ar.nex.entity.ubicacion.Contacto;
 import ar.nex.entity.ubicacion.Direccion;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.Date;
@@ -41,6 +44,7 @@ public abstract class Persona implements Serializable {
     @Column(name = "id_persona")
     private Long idPersona;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "pariente")
     private List<Familia> familiaList;
 
@@ -77,8 +81,7 @@ public abstract class Persona implements Serializable {
     
     @Column(name = "info")
     private String info;
-    
-    @JsonManagedReference
+        
     @ManyToMany(mappedBy = "personaList")
     private List<Contacto> contactoList;
 
@@ -227,13 +230,9 @@ public abstract class Persona implements Serializable {
 
     @Override
     public String toString() {
-        return getNombreCompleto();
-    }
-
-    public String getNombreCompleto() {
         return String.join(" ", this.apellido, this.nombre);
     }
-
+    
     public String getDtype() {
         return dtype;
     }

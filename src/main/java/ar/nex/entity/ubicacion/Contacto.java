@@ -47,21 +47,21 @@ public class Contacto implements Serializable {
     @Column(name = "info")
     private String info;
 
-    @JsonBackReference
+    @JsonIgnore
     @JoinTable(name = "rh_persona_contacto", joinColumns = {
         @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto")}, inverseJoinColumns = {
         @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")})
     @ManyToMany
     private List<Persona> personaList;
 
-    @JsonBackReference
+    @JsonIgnore
     @JoinTable(name = "empresa_contacto", joinColumns = {
         @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto")}, inverseJoinColumns = {
         @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")})
     @ManyToMany
     private List<Empresa> empresaList;
 
-    @JsonBackReference
+    @JsonIgnore
     @JoinTable(name = "rh_empleado_contacto", joinColumns = {
         @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto")}, inverseJoinColumns = {
         @JoinColumn(name = "id_empleado", referencedColumnName = "id_persona")})

@@ -12,6 +12,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  *
  * @author Renzo
@@ -23,6 +26,7 @@ public class Empleado extends Persona {
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
+   
     @Column(name = "fecha_baja")
     @Temporal(TemporalType.DATE)
     private Date fechaBaja;
@@ -35,10 +39,12 @@ public class Empleado extends Persona {
     @ManyToOne
     private EmpleadoPuesto puesto;
 
+    @JsonIgnore
     @JoinColumn(name = "empresa", referencedColumnName = "id_empresa")
     @ManyToOne
     private Empresa empresa;
 
+    @JsonIgnore
     @JoinColumn(name = "seguro", referencedColumnName = "id_seguro")
     @ManyToOne
     private Seguro seguro;
@@ -126,7 +132,7 @@ public class Empleado extends Persona {
 
     @Override
     public String toString() {
-        return getNombreCompleto() + " - " + this.puesto.toString();
+        return getApellido() + " - " + this.puesto.toString();
     }
 
 }

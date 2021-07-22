@@ -4,6 +4,8 @@ import ar.nex.entity.empleado.Persona;
 import ar.nex.entity.empresa.Empresa;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
@@ -30,9 +32,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 public class Direccion implements Serializable {
 
-    @OneToMany(mappedBy = "domicilio")
-    private List<Persona> personaList;
-
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -50,10 +49,15 @@ public class Direccion implements Serializable {
     @Column(name = "info")
     private String info;
 
-    @JsonBackReference
+    @JsonIgnore
+    @OneToMany(mappedBy = "domicilio")
+    private List<Persona> personaList;
+
+    @JsonIgnore //@JsonBackReference(value = "empresaList")
     @ManyToMany(mappedBy = "direccionList")
     private List<Empresa> empresaList;
 
+    
     @JoinColumn(name = "localidad", referencedColumnName = "id_localidad")
     @ManyToOne
     private Localidad localidad;
@@ -62,10 +66,6 @@ public class Direccion implements Serializable {
     private List<Coordenada> coordenadaList;
 
     public Direccion() {
-    }
-
-    public Direccion(Long idDireccion) {
-        this.idDireccion = idDireccion;
     }
 
     public Long getIdDireccion() {
@@ -191,7 +191,8 @@ public class Direccion implements Serializable {
             return "error!!!";
         }
     }
-
+    
+    @JsonIgnore
     public String getLocalidadProvincia() {
         try {
             return getLocalidad().getNombre() + " (" + getLocalidad().getCodigoPostal() + ") - " + getLocalidad().getProvincia();

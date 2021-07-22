@@ -4,6 +4,6 @@ package ar.nex.service;
  *
  * @author Renzo O. Gorosito
  */
-public interface ContactoService {
+public interface EmpleadoService {
     
 }

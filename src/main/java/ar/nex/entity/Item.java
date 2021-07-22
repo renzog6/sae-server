@@ -14,6 +14,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  *
  * @author Renzo
@@ -23,7 +25,7 @@ import javax.persistence.TemporalType;
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
+    
     @Id
     @Basic(optional = false)
     @Column(name = "uuid")

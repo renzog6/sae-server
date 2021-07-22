@@ -11,6 +11,9 @@ import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 /**
  *
  * @author Renzo
@@ -29,6 +32,8 @@ public class EmpleadoPuesto implements Serializable {
     private String nombre;
     @Column(name = "info")
     private String info;
+
+    @JsonBackReference(value = "empleadoList")
     @OneToMany(mappedBy = "puesto")
     private List<Empleado> empleadoList;
 
