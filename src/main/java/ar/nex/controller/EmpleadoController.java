@@ -88,8 +88,11 @@ public class EmpleadoController {
       _empleado.setGenero(empleado.getGenero());
       _empleado.setEstadoCivil(empleado.getEstadoCivil());
       _empleado.setDni(empleado.getDni());
+      _empleado.setCuil(empleado.getCuil());
       _empleado.setNacimiento(empleado.getNacimiento());
       _empleado.setFechaAlta(empleado.getFechaAlta());
+      _empleado.setPuesto(empleado.getPuesto());
+      _empleado.setCategoria(empleado.getCategoria());
       return new ResponseEntity<>(repository.save(_empleado), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
