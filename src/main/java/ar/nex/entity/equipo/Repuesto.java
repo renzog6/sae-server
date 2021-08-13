@@ -16,13 +16,13 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "ped_repuesto")
 @XmlRootElement
-public class Repuesto implements Serializable {  
-    
+public class Repuesto implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,13 +33,14 @@ public class Repuesto implements Serializable {
     private String codigo;
     @Column(name = "descripcion")
     private String descripcion;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    // @Max(value=?) @Min(value=?)//if you know range of your decimal fields
+    // consider using these annotations to enforce field validation
     @Column(name = "stock")
     private Double stock;
-    
+
     @Column(name = "marca")
     private String marca;
-    
+
     @Column(name = "info")
     private String info;
     @Column(name = "parte")
@@ -170,7 +171,8 @@ public class Repuesto implements Serializable {
             return false;
         }
         Repuesto other = (Repuesto) object;
-        if ((this.idRepuesto == null && other.idRepuesto != null) || (this.idRepuesto != null && !this.idRepuesto.equals(other.idRepuesto))) {
+        if ((this.idRepuesto == null && other.idRepuesto != null)
+                || (this.idRepuesto != null && !this.idRepuesto.equals(other.idRepuesto))) {
             return false;
         }
         return true;

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Repository
 public interface ContactoRepository extends JpaRepository<Contacto, Long> {

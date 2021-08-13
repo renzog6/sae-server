@@ -8,12 +8,12 @@ import ar.nex.entity.empleado.Empleado;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Service
 public class EmpleadoServiceImpl implements EmpleadoService {
-    
-    List<Empleado> findByName(String name){
+
+    List<Empleado> findByName(String name) {
         return null;
     }
 }

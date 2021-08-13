@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_gasto_gasoil")
@@ -17,7 +17,7 @@ public class Gasoil extends Gasto {
 
     @Column(name = "movimineto")
     private GasoilMovimiento movimineto;
-    
+
     @Column(name = "litros")
     private Double litros;
     @Column(name = "precio")

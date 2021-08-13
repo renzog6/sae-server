@@ -25,12 +25,11 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "pro_producto")
-@NamedQueries({
-    @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p")})
+@NamedQueries({ @NamedQuery(name = "Producto.findAll", query = "SELECT p FROM Producto p") })
 public class Producto implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,13 +46,13 @@ public class Producto implements Serializable {
     private BigInteger marca;
     @Column(name = "info")
     private String info;
-    
+
     @JoinTable(name = "pro_producto_marca", joinColumns = {
-        @JoinColumn(name = "id_producto", referencedColumnName = "id_producto")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_marca", referencedColumnName = "id_marca")})
+            @JoinColumn(name = "id_producto", referencedColumnName = "id_producto") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_marca", referencedColumnName = "id_marca") })
     @ManyToMany
     private List<Marca> marcaList;
-    
+
     @JoinColumn(name = "presentacion", referencedColumnName = "id_presentacion")
     @ManyToOne
     private Presentacion presentacion;
@@ -135,7 +134,8 @@ public class Producto implements Serializable {
             return false;
         }
         Producto other = (Producto) object;
-        if ((this.idProducto == null && other.idProducto != null) || (this.idProducto != null && !this.idProducto.equals(other.idProducto))) {
+        if ((this.idProducto == null && other.idProducto != null)
+                || (this.idProducto != null && !this.idProducto.equals(other.idProducto))) {
             return false;
         }
         return true;
@@ -145,5 +145,5 @@ public class Producto implements Serializable {
     public String toString() {
         return "ar.nex.entity.producto.Producto[ idProducto=" + idProducto + " ]";
     }
-    
+
 }

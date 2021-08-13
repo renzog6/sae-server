@@ -18,7 +18,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "cfg_admin_empresa")
@@ -39,7 +39,7 @@ public class AdminEmpresa implements Serializable {
     private Long idAdmin;
     @Column(name = "estado")
     private EmpresaEstado estado;
-    
+
     @Column(name = "info")
     private String info;
     @JoinColumn(name = "empresa", referencedColumnName = "id_empresa")
@@ -99,7 +99,8 @@ public class AdminEmpresa implements Serializable {
             return false;
         }
         AdminEmpresa other = (AdminEmpresa) object;
-        if ((this.idAdmin == null && other.idAdmin != null) || (this.idAdmin != null && !this.idAdmin.equals(other.idAdmin))) {
+        if ((this.idAdmin == null && other.idAdmin != null)
+                || (this.idAdmin != null && !this.idAdmin.equals(other.idAdmin))) {
             return false;
         }
         return true;
@@ -125,5 +126,5 @@ public class AdminEmpresa implements Serializable {
     public void setFechaBaja(Date fechaBaja) {
         this.fechaBaja = fechaBaja;
     }
-    
+
 }

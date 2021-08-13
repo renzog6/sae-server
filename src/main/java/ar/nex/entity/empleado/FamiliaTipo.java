@@ -2,8 +2,8 @@ package ar.nex.entity.empleado;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 public enum FamiliaTipo {
-    
+
 }

@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "rubro")
@@ -36,10 +36,10 @@ public class Rubro implements Serializable {
     private Integer codigo;
     @Column(name = "descripcion")
     private String descripcion;
-  
+
     @OneToMany(mappedBy = "rubro")
     private List<SubRubro> subRubroList;
-    
+
     @ManyToMany(mappedBy = "rubroList")
     private List<Empresa> empresaList;
 

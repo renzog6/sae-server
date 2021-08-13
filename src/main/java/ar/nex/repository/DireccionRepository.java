@@ -1,6 +1,6 @@
 package ar.nex.repository;
 
-import ar.nex.entity.empresa.Empresa;
+import ar.nex.entity.ubicacion.Direccion;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,8 +9,6 @@ import org.springframework.stereotype.Repository;
  * @author Renzo O. Gorosito
  */
 @Repository
-public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
-
-    Empresa findByIdEmpresa(Long idEmpresa);
+public interface DireccionRepository extends JpaRepository<Direccion, Long> {
 
 }

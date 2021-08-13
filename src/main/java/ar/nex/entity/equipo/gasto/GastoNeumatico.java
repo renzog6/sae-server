@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_gasto_neumatico")
@@ -17,7 +17,7 @@ public class GastoNeumatico extends Gasto {
 
     @Column(name = "numero")
     private String numero;
-   
+
     @Column(name = "posicion")
     private String posicion;
 
@@ -79,5 +79,4 @@ public class GastoNeumatico extends Gasto {
         return "GastoNeumatico{" + "numero=" + numero + ", posicion=" + posicion + '}';
     }
 
-  
 }

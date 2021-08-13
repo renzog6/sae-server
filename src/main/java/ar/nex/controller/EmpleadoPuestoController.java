@@ -23,7 +23,7 @@ import ar.nex.repository.EmpleadoPuestoRepository;
 
 /**
  *
- * @author Renzo O. Gorosito
+ * @author Renzo O. Gorosito O. Gorosito
  */
 @CrossOrigin(origins = "*")
 @RestController
@@ -67,7 +67,7 @@ public class EmpleadoPuestoController {
   @PostMapping("/create")
   public ResponseEntity<EmpleadoPuesto> createEmpleadoPuesto(@RequestBody EmpleadoPuesto item) {
     try {
-      EmpleadoPuesto puesto = new EmpleadoPuesto();      
+      EmpleadoPuesto puesto = new EmpleadoPuesto();
       puesto.setNombre(item.getNombre());
       puesto.setInfo(item.getInfo());
       EmpleadoPuesto _item = repository.save(puesto);
@@ -78,7 +78,8 @@ public class EmpleadoPuestoController {
   }
 
   @PutMapping("/update/{id}")
-  public ResponseEntity<EmpleadoPuesto> updateEmpleadoPuesto(@PathVariable("id") long id, @RequestBody EmpleadoPuesto item) {
+  public ResponseEntity<EmpleadoPuesto> updateEmpleadoPuesto(@PathVariable("id") long id,
+      @RequestBody EmpleadoPuesto item) {
     try {
       Optional<EmpleadoPuesto> itemData = repository.findById(id);
       if (itemData.isPresent()) {
@@ -97,13 +98,13 @@ public class EmpleadoPuestoController {
   @DeleteMapping("/delete/{id}")
   public ResponseEntity<String> deleteEmpleadoPuesto(@PathVariable("id") long id) {
     try {
-      Optional<EmpleadoPuesto> itemData = repository.findById(id);      
+      Optional<EmpleadoPuesto> itemData = repository.findById(id);
       if (itemData.isPresent()) {
         EmpleadoPuesto _item = itemData.get();
         repository.delete(_item);
         return new ResponseEntity<>(HttpStatus.OK);
       } else {
-        return new ResponseEntity<>("ITEM::: "+id+" NO exite",HttpStatus.BAD_GATEWAY);
+        return new ResponseEntity<>("ITEM::: " + id + " NO exite", HttpStatus.BAD_GATEWAY);
       }
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

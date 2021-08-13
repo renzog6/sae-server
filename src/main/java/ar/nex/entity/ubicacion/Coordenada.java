@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "ubi_coordenada")
@@ -25,14 +25,15 @@ public class Coordenada implements Serializable {
     private Long idCoordenada;
     @Column(name = "info")
     private String info;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    // @Max(value=?) @Min(value=?)//if you know range of your decimal fields
+    // consider using these annotations to enforce field validation
     @Column(name = "latitud")
     private Double latitud;
     @Column(name = "longitud")
     private Double longitud;
     @Column(name = "poly")
     private String poly;
-    
+
     @JoinColumn(name = "id_direccion", referencedColumnName = "id_direccion")
     @ManyToOne
     private Direccion direccion;
@@ -108,7 +109,8 @@ public class Coordenada implements Serializable {
             return false;
         }
         Coordenada other = (Coordenada) object;
-        if ((this.idCoordenada == null && other.idCoordenada != null) || (this.idCoordenada != null && !this.idCoordenada.equals(other.idCoordenada))) {
+        if ((this.idCoordenada == null && other.idCoordenada != null)
+                || (this.idCoordenada != null && !this.idCoordenada.equals(other.idCoordenada))) {
             return false;
         }
         return true;
@@ -118,5 +120,5 @@ public class Coordenada implements Serializable {
     public String toString() {
         return "ar.nex.entity.ubicacion.Coordenada[ idCoordenada=" + idCoordenada + " ]";
     }
-   
+
 }

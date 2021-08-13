@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author Renzo O. Gorosito
+ * @author Renzo O. Gorosito O. Gorosito
  */
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("api/empresa")
 public class EmpresaRestController {
-    
-     @Autowired
-     private EmpresaService service;
-    
+
+    @Autowired
+    private EmpresaService service;
+
     @GetMapping("/list")
-    public List<Empresa> getAll(){
+    public List<Empresa> getAll() {
         List<Empresa> list = new ArrayList<>();
         try {
             list = service.getAll();
-            System.out.println("ar.nex.controller.api.EmpresaRestController.getAll()>>>>> "+service.getAll().size());
+            System.out.println("ar.nex.controller.api.EmpresaRestController.getAll()>>>>> " + service.getAll().size());
         } catch (Exception e) {
             e.printStackTrace();
-        }        
+        }
         return list;
     }
-    
+
 }

@@ -2,9 +2,7 @@ package ar.nex.entity.ubicacion;
 
 import ar.nex.entity.empleado.Persona;
 import ar.nex.entity.empresa.Empresa;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.io.Serializable;
 import java.util.List;
@@ -25,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "ubi_direccion")
@@ -53,15 +51,15 @@ public class Direccion implements Serializable {
     @OneToMany(mappedBy = "domicilio")
     private List<Persona> personaList;
 
-    @JsonIgnore //@JsonBackReference(value = "empresaList")
+    @JsonIgnore // @JsonBackReference(value = "empresaList")
     @ManyToMany(mappedBy = "direccionList")
     private List<Empresa> empresaList;
 
-    
     @JoinColumn(name = "localidad", referencedColumnName = "id_localidad")
     @ManyToOne
     private Localidad localidad;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "direccion")
     private List<Coordenada> coordenadaList;
 
@@ -191,11 +189,12 @@ public class Direccion implements Serializable {
             return "error!!!";
         }
     }
-    
+
     @JsonIgnore
     public String getLocalidadProvincia() {
         try {
-            return getLocalidad().getNombre() + " (" + getLocalidad().getCodigoPostal() + ") - " + getLocalidad().getProvincia();
+            return getLocalidad().getNombre() + " (" + getLocalidad().getCodigoPostal() + ") - "
+                    + getLocalidad().getProvincia();
         } catch (Exception e) {
             return "LP errror!!!";
         }

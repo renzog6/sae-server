@@ -7,9 +7,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,7 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "rh_persona")
@@ -67,26 +69,26 @@ public abstract class Persona implements Serializable {
     @Column(name = "cuil")
     private String cuil;
 
-    @Enumerated(EnumType.ORDINAL)    
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "genero")
     private PersonaGenero genero;
 
-    @Enumerated(EnumType.ORDINAL) 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "estado")
     private PersonaEstado estado;
-    
-    @Enumerated(EnumType.ORDINAL) 
+
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "estado_civil")
     private EstadoCivil estadoCivil;
-    
+
     @Column(name = "info")
     private String info;
-        
+
     @ManyToMany(mappedBy = "personaList")
     private List<Contacto> contactoList;
 
     @JoinColumn(name = "domicilio", referencedColumnName = "id_direccion")
-    @ManyToOne
+    @ManyToOne(cascade = { CascadeType.ALL })
     private Direccion domicilio;
 
     public Persona() {
@@ -222,7 +224,8 @@ public abstract class Persona implements Serializable {
             return false;
         }
         Persona other = (Persona) object;
-        if ((this.idPersona == null && other.idPersona != null) || (this.idPersona != null && !this.idPersona.equals(other.idPersona))) {
+        if ((this.idPersona == null && other.idPersona != null)
+                || (this.idPersona != null && !this.idPersona.equals(other.idPersona))) {
             return false;
         }
         return true;
@@ -232,7 +235,7 @@ public abstract class Persona implements Serializable {
     public String toString() {
         return String.join(" ", this.apellido, this.nombre);
     }
-    
+
     public String getDtype() {
         return dtype;
     }

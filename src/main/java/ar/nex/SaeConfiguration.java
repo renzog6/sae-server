@@ -5,10 +5,10 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Configuration
 @ComponentScan(value = "ar.nex")
 public class SaeConfiguration {
-    
+
 }

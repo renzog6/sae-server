@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "rh_familia")
@@ -74,7 +74,8 @@ public class Familia extends Persona {
             return false;
         }
         Familia other = (Familia) object;
-        if ((this.idFamilia == null && other.idFamilia != null) || (this.idFamilia != null && !this.idFamilia.equals(other.idFamilia))) {
+        if ((this.idFamilia == null && other.idFamilia != null)
+                || (this.idFamilia != null && !this.idFamilia.equals(other.idFamilia))) {
             return false;
         }
         return true;

@@ -2,15 +2,11 @@ package ar.nex.entity;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 public enum SeguroTipo {
 
-    EMPLEADO(0, "Empleado"),
-    EQUIPO(1, "Equipo"),
-    CAMPO(2, "Campo"),
-    SIEMBRA(3, "Siembra"),
-    CEREAL(4, "Cereal"),
+    EMPLEADO(0, "Empleado"), EQUIPO(1, "Equipo"), CAMPO(2, "Campo"), SIEMBRA(3, "Siembra"), CEREAL(4, "Cereal"),
     OTRO(5, "Otro");
 
     private final int value;

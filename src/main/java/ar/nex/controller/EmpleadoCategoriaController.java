@@ -21,10 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 import ar.nex.entity.empleado.EmpleadoCategoria;
 import ar.nex.repository.EmpleadoCategoriaRepository;
 
-
 /**
  *
- * @author Renzo O. Gorosito
+ * @author Renzo O. Gorosito O. Gorosito
  */
 @CrossOrigin(origins = "*")
 @RestController
@@ -68,7 +67,7 @@ public class EmpleadoCategoriaController {
   @PostMapping("/create")
   public ResponseEntity<EmpleadoCategoria> createEmpleadoCategoria(@RequestBody EmpleadoCategoria item) {
     try {
-      EmpleadoCategoria ec = new EmpleadoCategoria();      
+      EmpleadoCategoria ec = new EmpleadoCategoria();
       ec.setNombre(item.getNombre());
       ec.setInfo(item.getInfo());
       EmpleadoCategoria _item = repository.save(ec);
@@ -79,7 +78,8 @@ public class EmpleadoCategoriaController {
   }
 
   @PutMapping("/update/{id}")
-  public ResponseEntity<EmpleadoCategoria> updateEmpleadoCategoria(@PathVariable("id") long id, @RequestBody EmpleadoCategoria item) {
+  public ResponseEntity<EmpleadoCategoria> updateEmpleadoCategoria(@PathVariable("id") long id,
+      @RequestBody EmpleadoCategoria item) {
     try {
       Optional<EmpleadoCategoria> itemData = repository.findById(id); // .findById(id);
       if (itemData.isPresent()) {
@@ -98,13 +98,13 @@ public class EmpleadoCategoriaController {
   @DeleteMapping("/delete/{id}")
   public ResponseEntity<String> deleteEmpleadoCategoria(@PathVariable("id") long id) {
     try {
-      Optional<EmpleadoCategoria> itemData = repository.findById(id);      
+      Optional<EmpleadoCategoria> itemData = repository.findById(id);
       if (itemData.isPresent()) {
         EmpleadoCategoria _item = itemData.get();
         repository.delete(_item);
         return new ResponseEntity<>(HttpStatus.OK);
       } else {
-        return new ResponseEntity<>("ITEM::: "+id+" NO exite",HttpStatus.BAD_GATEWAY);
+        return new ResponseEntity<>("ITEM::: " + id + " NO exite", HttpStatus.BAD_GATEWAY);
       }
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

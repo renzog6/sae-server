@@ -8,14 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import ar.nex.entity.empleado.EmpleadoCategoria;
 
-
 /**
  *
- * @author Renzo O. Gorosito
+ * @author Renzo O. Gorosito O. Gorosito
  */
 @Repository
 public interface EmpleadoCategoriaRepository extends JpaRepository<EmpleadoCategoria, Long> {
 
   Optional<EmpleadoCategoria> findById(long id);
-  
+
 }

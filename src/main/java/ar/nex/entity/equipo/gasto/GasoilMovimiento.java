@@ -2,13 +2,11 @@ package ar.nex.entity.equipo.gasto;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 public enum GasoilMovimiento {
 
-    CARGA(0, "Carga"),
-    DESCARDA(1, "Descarga"),
-    OTRO(2, "Otro");
+    CARGA(0, "Carga"), DESCARDA(1, "Descarga"), OTRO(2, "Otro");
 
     private final int value;
     private final String estado;

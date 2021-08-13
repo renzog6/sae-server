@@ -20,7 +20,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_gasto")
@@ -107,7 +107,7 @@ public class Gasto implements Serializable {
     public Double getKms() {
         return kms;
     }
-    
+
     public void setKms(Double kms) {
         this.kms = kms;
     }
@@ -165,6 +165,5 @@ public class Gasto implements Serializable {
     public String toString() {
         return "ar.nex.entity.equipo.gasto.Gasto[ idGasto=" + idGasto + " ]";
     }
- 
 
 }

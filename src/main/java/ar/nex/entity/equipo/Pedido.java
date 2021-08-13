@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "ped_pedido")
@@ -31,7 +31,8 @@ public class Pedido implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_pedido")
     private Long idPedido;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    // @Max(value=?) @Min(value=?)//if you know range of your decimal fields
+    // consider using these annotations to enforce field validation
     @Column(name = "cantidad")
     private Double cantidad;
     @Column(name = "estado")
@@ -44,11 +45,11 @@ public class Pedido implements Serializable {
     private Date fechaInicio;
     @Column(name = "info")
     private String info;
-    
+
     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")
     @ManyToOne
     private Empresa empresa;
-    
+
     @JoinColumn(name = "id_repuesto", referencedColumnName = "id_repuesto")
     @ManyToOne
     private Repuesto repuesto;
@@ -138,7 +139,8 @@ public class Pedido implements Serializable {
             return false;
         }
         Pedido other = (Pedido) object;
-        if ((this.idPedido == null && other.idPedido != null) || (this.idPedido != null && !this.idPedido.equals(other.idPedido))) {
+        if ((this.idPedido == null && other.idPedido != null)
+                || (this.idPedido != null && !this.idPedido.equals(other.idPedido))) {
             return false;
         }
         return true;
@@ -146,7 +148,7 @@ public class Pedido implements Serializable {
 
     @Override
     public String toString() {
-        return "[ " + this.fechaInicio + " ] - "+this.empresa.getNombre();
+        return "[ " + this.fechaInicio + " ] - " + this.empresa.getNombre();
     }
-    
+
 }

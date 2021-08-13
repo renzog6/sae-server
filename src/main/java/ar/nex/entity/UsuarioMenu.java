@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "usr_menu")
@@ -35,8 +35,8 @@ public class UsuarioMenu implements Serializable {
     @Column(name = "code")
     private Integer code;
     @JoinTable(name = "usr_usuario_menu", joinColumns = {
-        @JoinColumn(name = "id_menu", referencedColumnName = "id_menu")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario")})
+            @JoinColumn(name = "id_menu", referencedColumnName = "id_menu") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario") })
     @ManyToMany
     private List<Usuario> usuarioList;
 
@@ -94,7 +94,8 @@ public class UsuarioMenu implements Serializable {
             return false;
         }
         UsuarioMenu other = (UsuarioMenu) object;
-        if ((this.idMenu == null && other.idMenu != null) || (this.idMenu != null && !this.idMenu.equals(other.idMenu))) {
+        if ((this.idMenu == null && other.idMenu != null)
+                || (this.idMenu != null && !this.idMenu.equals(other.idMenu))) {
             return false;
         }
         return true;
@@ -104,5 +105,5 @@ public class UsuarioMenu implements Serializable {
     public String toString() {
         return "ar.nex.entity.UsrMenu[ idMenu=" + idMenu + " ]";
     }
-    
+
 }

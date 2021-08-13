@@ -7,13 +7,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 public enum PersonaEstado {
 
-    ACTIVO(0, "Activo"),
-    BAJA(1, "Baja"),
-    OTRO(2, "Otro");
+    ACTIVO(0, "Activo"), BAJA(1, "Baja"), OTRO(2, "Otro");
 
     private final int id;
     private final String value;
@@ -37,17 +35,17 @@ public enum PersonaEstado {
     }
 
     public static Stream<PersonaEstado> stream() {
-        return Stream.of(PersonaEstado.values()); 
+        return Stream.of(PersonaEstado.values());
     }
 
     @JsonCreator
-	public PersonaEstado decode(final String values) {		
+    public PersonaEstado decode(final String values) {
         return Stream.of(PersonaEstado.values()).filter(target -> target.value.equals(value)).findFirst().orElse(null);
-	}
-	
-	@JsonValue
-	public String getCode() {
-		return value;
-	}
+    }
+
+    @JsonValue
+    public String getCode() {
+        return value;
+    }
 
 }

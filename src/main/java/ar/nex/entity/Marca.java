@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "aux_marca")
@@ -36,7 +36,7 @@ public class Marca implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_marca")
     private Long idMarca;
-    
+
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "descripcion")
@@ -44,8 +44,7 @@ public class Marca implements Serializable {
 
     @OneToMany(mappedBy = "marca")
     private List<Equipo> equipoList;
-        
-    
+
     public Marca() {
     }
 

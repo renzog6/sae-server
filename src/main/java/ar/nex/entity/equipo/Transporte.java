@@ -14,7 +14,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_transporte")
@@ -124,7 +124,8 @@ public class Transporte implements Serializable {
             return false;
         }
         Transporte other = (Transporte) object;
-        if ((this.idTransporte == null && other.idTransporte != null) || (this.idTransporte != null && !this.idTransporte.equals(other.idTransporte))) {
+        if ((this.idTransporte == null && other.idTransporte != null)
+                || (this.idTransporte != null && !this.idTransporte.equals(other.idTransporte))) {
             return false;
         }
         return true;

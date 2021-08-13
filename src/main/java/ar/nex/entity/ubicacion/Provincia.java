@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "ubi_provincia")
@@ -34,7 +34,7 @@ public class Provincia implements Serializable {
     private String nombre;
     @Column(name = "codigo")
     private String codigo;
-    
+
     @JsonIgnore
     @OneToMany(mappedBy = "provincia")
     private List<Localidad> localidadList;
@@ -93,7 +93,8 @@ public class Provincia implements Serializable {
             return false;
         }
         Provincia other = (Provincia) object;
-        if ((this.idProvincia == null && other.idProvincia != null) || (this.idProvincia != null && !this.idProvincia.equals(other.idProvincia))) {
+        if ((this.idProvincia == null && other.idProvincia != null)
+                || (this.idProvincia != null && !this.idProvincia.equals(other.idProvincia))) {
             return false;
         }
         return true;
@@ -103,5 +104,5 @@ public class Provincia implements Serializable {
     public String toString() {
         return this.nombre;
     }
-    
+
 }

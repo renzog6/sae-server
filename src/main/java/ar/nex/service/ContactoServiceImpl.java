@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Service
 public class ContactoServiceImpl implements ContactoService {
@@ -17,7 +17,6 @@ public class ContactoServiceImpl implements ContactoService {
     @Autowired
     private ContactoRepository contactoRepository;
 
-    
     public List<Contacto> findAll() {
         List<Contacto> list = new ArrayList<>();
         try {

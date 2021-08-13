@@ -21,7 +21,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "doc_seguro")
@@ -51,7 +51,8 @@ public class Seguro implements Serializable {
     private Date hasta;
     @Column(name = "referencia")
     private String referencia;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    // @Max(value=?) @Min(value=?)//if you know range of your decimal fields
+    // consider using these annotations to enforce field validation
     @Column(name = "prima")
     private Double prima;
     @Column(name = "monto")
@@ -73,12 +74,13 @@ public class Seguro implements Serializable {
     public Seguro(Long idSeguro) {
         this.idSeguro = idSeguro;
     }
-    
+
     /**
      * Constructor()
      * 
      * Se usa para los nuevos seguros: Equiupos, Empleado, etc...
-     * @param tipo 
+     * 
+     * @param tipo
      */
     public Seguro(SeguroTipo tipo) {
         this.tipo = tipo;
@@ -202,7 +204,8 @@ public class Seguro implements Serializable {
             return false;
         }
         Seguro other = (Seguro) object;
-        if ((this.idSeguro == null && other.idSeguro != null) || (this.idSeguro != null && !this.idSeguro.equals(other.idSeguro))) {
+        if ((this.idSeguro == null && other.idSeguro != null)
+                || (this.idSeguro != null && !this.idSeguro.equals(other.idSeguro))) {
             return false;
         }
         return true;

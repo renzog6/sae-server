@@ -23,7 +23,7 @@ import ar.nex.repository.ItemRepository;
 
 /**
  *
- * @author Renzo O. Gorosito
+ * @author Renzo O. Gorosito O. Gorosito
  */
 @CrossOrigin(origins = "*")
 @RestController
@@ -95,13 +95,13 @@ public class ItemController {
   @DeleteMapping("/delete/{uuid}")
   public ResponseEntity<String> deleteItem(@PathVariable("uuid") String uuid) {
     try {
-      Optional<Item> itemData = repository.findByUuid(uuid);      
+      Optional<Item> itemData = repository.findByUuid(uuid);
       if (itemData.isPresent()) {
         Item _item = itemData.get();
         repository.delete(_item);
         return new ResponseEntity<>(HttpStatus.OK);
       } else {
-        return new ResponseEntity<>("ITEM::: "+uuid+" NO exite",HttpStatus.BAD_GATEWAY);
+        return new ResponseEntity<>("ITEM::: " + uuid + " NO exite", HttpStatus.BAD_GATEWAY);
       }
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

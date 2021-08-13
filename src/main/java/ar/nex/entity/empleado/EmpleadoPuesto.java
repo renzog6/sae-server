@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "rh_puesto")
@@ -91,7 +91,8 @@ public class EmpleadoPuesto implements Serializable {
             return false;
         }
         EmpleadoPuesto other = (EmpleadoPuesto) object;
-        if ((this.idPuesto == null && other.idPuesto != null) || (this.idPuesto != null && !this.idPuesto.equals(other.idPuesto))) {
+        if ((this.idPuesto == null && other.idPuesto != null)
+                || (this.idPuesto != null && !this.idPuesto.equals(other.idPuesto))) {
             return false;
         }
         return true;
@@ -101,5 +102,5 @@ public class EmpleadoPuesto implements Serializable {
     public String toString() {
         return this.nombre + " ( " + this.info + " )";
     }
-    
+
 }

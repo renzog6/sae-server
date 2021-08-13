@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "usr_usuario")
@@ -43,18 +43,18 @@ public class Usuario implements Serializable {
     private String info;
     @Column(name = "estado")
     private String estado;
-    
+
     @ManyToMany(mappedBy = "usuarioList")
     private List<UsuarioMenu> usrMenuList;
-    
+
     @JoinColumn(name = "grupo", referencedColumnName = "id_grupo")
     @ManyToOne
     private UsuarioGrupo grupo;
-    
+
     @JoinColumn(name = "id_usuario", referencedColumnName = "id_persona", insertable = false, updatable = false)
     @OneToOne(optional = false)
     private Persona persona;
-    
+
     public Usuario() {
     }
 
@@ -149,7 +149,8 @@ public class Usuario implements Serializable {
             return false;
         }
         Usuario other = (Usuario) object;
-        if ((this.idUsuario == null && other.idUsuario != null) || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
+        if ((this.idUsuario == null && other.idUsuario != null)
+                || (this.idUsuario != null && !this.idUsuario.equals(other.idUsuario))) {
             return false;
         }
         return true;
@@ -159,5 +160,5 @@ public class Usuario implements Serializable {
     public String toString() {
         return "ar.nex.entity.Usuario[ idUsuario=" + idUsuario + " ]";
     }
-    
+
 }

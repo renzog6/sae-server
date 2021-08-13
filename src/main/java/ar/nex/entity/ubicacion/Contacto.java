@@ -9,8 +9,10 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -23,7 +25,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "contacto")
@@ -49,22 +51,22 @@ public class Contacto implements Serializable {
 
     @JsonIgnore
     @JoinTable(name = "rh_persona_contacto", joinColumns = {
-        @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_persona", referencedColumnName = "id_persona")})
-    @ManyToMany
+            @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_persona", referencedColumnName = "id_persona") })
+    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     private List<Persona> personaList;
 
     @JsonIgnore
     @JoinTable(name = "empresa_contacto", joinColumns = {
-        @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")})
+            @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa") })
     @ManyToMany
     private List<Empresa> empresaList;
 
     @JsonIgnore
     @JoinTable(name = "rh_empleado_contacto", joinColumns = {
-        @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_empleado", referencedColumnName = "id_persona")})
+            @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_empleado", referencedColumnName = "id_persona") })
     @ManyToMany
     private List<Empleado> empleadoList;
 
@@ -160,7 +162,8 @@ public class Contacto implements Serializable {
             return false;
         }
         Contacto other = (Contacto) object;
-        if ((this.idContacto == null && other.idContacto != null) || (this.idContacto != null && !this.idContacto.equals(other.idContacto))) {
+        if ((this.idContacto == null && other.idContacto != null)
+                || (this.idContacto != null && !this.idContacto.equals(other.idContacto))) {
             return false;
         }
         return true;

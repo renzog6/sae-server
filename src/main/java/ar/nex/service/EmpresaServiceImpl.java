@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Service
 public class EmpresaServiceImpl implements EmpresaService {

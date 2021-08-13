@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "ubi_localidad")
@@ -41,8 +41,7 @@ public class Localidad implements Serializable {
 
     @Column(name = "codigo_postal")
     private String codigoPostal;
-    
-   
+
     @JoinColumn(name = "provincia", referencedColumnName = "id_provincia")
     @ManyToOne
     private Provincia provincia;
@@ -54,8 +53,8 @@ public class Localidad implements Serializable {
     public Localidad() {
     }
 
-    public Localidad(String Nombre) {
-        this.nombre = nombre;
+    public Localidad(String name) {
+        this.nombre = name;
     }
 
     public Localidad(Long idLocalidad) {
@@ -94,6 +93,11 @@ public class Localidad implements Serializable {
         this.provincia = provincia;
     }
 
+    /*
+     * public String getProvinciaName() { return this.provincia.getNombre(); }
+     * 
+     * public String getProvinciaCode() { return this.provincia.getCodigo(); }
+     */
     @XmlTransient
     public List<Direccion> getDireccionList() {
         return direccionList;

@@ -16,7 +16,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "rh_categoria")
@@ -32,7 +32,7 @@ public class EmpleadoCategoria implements Serializable {
     private String nombre;
     @Column(name = "info")
     private String info;
-   
+
     @JsonBackReference(value = "empleadoList")
     @OneToMany(mappedBy = "categoria")
     private List<Empleado> empleadoList;
@@ -91,7 +91,8 @@ public class EmpleadoCategoria implements Serializable {
             return false;
         }
         EmpleadoCategoria other = (EmpleadoCategoria) object;
-        if ((this.idCategoria == null && other.idCategoria != null) || (this.idCategoria != null && !this.idCategoria.equals(other.idCategoria))) {
+        if ((this.idCategoria == null && other.idCategoria != null)
+                || (this.idCategoria != null && !this.idCategoria.equals(other.idCategoria))) {
             return false;
         }
         return true;

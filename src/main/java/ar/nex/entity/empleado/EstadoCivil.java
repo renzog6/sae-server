@@ -7,16 +7,12 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 public enum EstadoCivil {
 
-    SOLTERO(0, "Soltero"),
-    CASADO(1, "Casado"),
-    DIVORCIADO(2, "Divorciado"),
-    VIUDO(3, "Viudo"),
-    CONCUBINATO(4, "Concubinato"),
-    OTRO(9, "Otro");
+    SOLTERO(0, "Soltero"), CASADO(1, "Casado"), DIVORCIADO(2, "Divorciado"), VIUDO(3, "Viudo"),
+    CONCUBINATO(4, "Concubinato"), OTRO(9, "Otro");
 
     private final int id;
     private final String value;
@@ -33,23 +29,23 @@ public enum EstadoCivil {
     public String getNombre() {
         return value;
     }
-    
+
     @Override
     public String toString() {
         return value;
     }
 
     public static Stream<EstadoCivil> stream() {
-        return Stream.of(EstadoCivil.values()); 
+        return Stream.of(EstadoCivil.values());
     }
 
     @JsonCreator
-	public EstadoCivil decode(final String ids) {		
+    public EstadoCivil decode(final String ids) {
         return Stream.of(EstadoCivil.values()).filter(target -> target.value.equals(value)).findFirst().orElse(null);
-	}
-	
-	@JsonValue
-	public String getCode() {
-		return value;
-	}
+    }
+
+    @JsonValue
+    public String getCode() {
+        return value;
+    }
 }

@@ -9,10 +9,10 @@ import ar.nex.entity.empleado.Empleado;
 
 /**
  *
- * @author Renzo O. Gorosito
+ * @author Renzo O. Gorosito O. Gorosito
  */
 @Repository
 public interface EmpleadoRepository extends JpaRepository<Empleado, Long> {
 
-  //  List<Empleado> findByName(String name);
+  // List<Empleado> findByName(String name);
 }

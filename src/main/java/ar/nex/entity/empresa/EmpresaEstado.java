@@ -2,14 +2,11 @@ package ar.nex.entity.empresa;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 public enum EmpresaEstado {
 
-    ACTIVO(0, "Activo"),
-    BAJA(1, "Baja"),
-    SUPENDIDO(2, "Supendido"),
-    OTRO(9, "Otro");
+    ACTIVO(0, "Activo"), BAJA(1, "Baja"), SUPENDIDO(2, "Supendido"), OTRO(9, "Otro");
 
     private final int value;
     private final String estado;

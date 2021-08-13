@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_compra_venta")
@@ -38,7 +38,8 @@ public class EquipoCompraVenta implements Serializable {
     private Date fechaCompra;
     @Column(name = "vendedor")
     private String vendedor;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    // @Max(value=?) @Min(value=?)//if you know range of your decimal fields
+    // consider using these annotations to enforce field validation
     @Column(name = "valor_compra")
     private Double valorCompra;
     @Column(name = "fecha_venta")
@@ -147,7 +148,8 @@ public class EquipoCompraVenta implements Serializable {
             return false;
         }
         EquipoCompraVenta other = (EquipoCompraVenta) object;
-        if ((this.idCompraVenta == null && other.idCompraVenta != null) || (this.idCompraVenta != null && !this.idCompraVenta.equals(other.idCompraVenta))) {
+        if ((this.idCompraVenta == null && other.idCompraVenta != null)
+                || (this.idCompraVenta != null && !this.idCompraVenta.equals(other.idCompraVenta))) {
             return false;
         }
         return true;
@@ -157,5 +159,5 @@ public class EquipoCompraVenta implements Serializable {
     public String toString() {
         return "ar.nex.entity.EqCompraVenta[ idCompraVenta=" + idCompraVenta + " ]";
     }
-    
+
 }

@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_repuesto_stock_detalle")
@@ -31,22 +31,23 @@ public class RepuestoStockDetalle implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_stock")
     private Long idStock;
-    
+
     @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
-    
+
     @Column(name = "detalle")
     private String detalle;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    // @Max(value=?) @Min(value=?)//if you know range of your decimal fields
+    // consider using these annotations to enforce field validation
     @Column(name = "cantidad")
     private Double cantidad;
-    @Column(name = "usuario")    
+    @Column(name = "usuario")
     private Long usuario;
-    
+
     @Column(name = "info")
     private String info;
-    
+
     @Column(name = "estado")
     private Integer estado;
 
@@ -151,7 +152,8 @@ public class RepuestoStockDetalle implements Serializable {
             return false;
         }
         RepuestoStockDetalle other = (RepuestoStockDetalle) object;
-        if ((this.idStock == null && other.idStock != null) || (this.idStock != null && !this.idStock.equals(other.idStock))) {
+        if ((this.idStock == null && other.idStock != null)
+                || (this.idStock != null && !this.idStock.equals(other.idStock))) {
             return false;
         }
         return true;

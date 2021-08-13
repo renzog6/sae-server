@@ -18,12 +18,11 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "pro_presentacion")
-@NamedQueries({
-    @NamedQuery(name = "Presentacion.findAll", query = "SELECT p FROM Presentacion p")})
+@NamedQueries({ @NamedQuery(name = "Presentacion.findAll", query = "SELECT p FROM Presentacion p") })
 public class Presentacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -35,7 +34,8 @@ public class Presentacion implements Serializable {
     private String nombre;
     @Column(name = "codigo")
     private String codigo;
-    // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
+    // @Max(value=?) @Min(value=?)//if you know range of your decimal fields
+    // consider using these annotations to enforce field validation
     @Column(name = "valor")
     private Double valor;
     @Column(name = "info")
@@ -112,7 +112,8 @@ public class Presentacion implements Serializable {
             return false;
         }
         Presentacion other = (Presentacion) object;
-        if ((this.idPresentacion == null && other.idPresentacion != null) || (this.idPresentacion != null && !this.idPresentacion.equals(other.idPresentacion))) {
+        if ((this.idPresentacion == null && other.idPresentacion != null)
+                || (this.idPresentacion != null && !this.idPresentacion.equals(other.idPresentacion))) {
             return false;
         }
         return true;
@@ -122,5 +123,5 @@ public class Presentacion implements Serializable {
     public String toString() {
         return "ar.nex.entity.producto.Presentacion[ idPresentacion=" + idPresentacion + " ]";
     }
-    
+
 }

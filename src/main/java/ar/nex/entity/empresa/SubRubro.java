@@ -15,13 +15,13 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "rubro_sub")
 public class SubRubro implements Serializable {
 
-private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -33,15 +33,13 @@ private static final long serialVersionUID = 1L;
     private Integer codigo;
     @Column(name = "descripcion")
     private String descripcion;
-    
+
     @JoinColumn(name = "rubro", referencedColumnName = "id_rubro")
     @ManyToOne
     private Rubro rubro;
 
     public SubRubro() {
     }
-
-
 
     public Long getIdSub() {
         return idSub;
@@ -116,5 +114,5 @@ private static final long serialVersionUID = 1L;
     public String toString() {
         return this.nombre;
     }
-    
+
 }

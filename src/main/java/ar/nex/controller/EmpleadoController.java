@@ -19,20 +19,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.nex.entity.empleado.Empleado;
-import ar.nex.entity.empleado.PersonaGenero;
+import ar.nex.entity.empleado.PersonaEstado;
+import ar.nex.entity.empresa.Empresa;
+import ar.nex.entity.ubicacion.Contacto;
 import ar.nex.repository.EmpleadoRepository;
+import ar.nex.repository.EmpresaRepository;
 
 /**
  *
- * @author Renzo O. Gorosito
+ * @author Renzo O. Gorosito O. Gorosito
  */
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "api/empleado") //@RequestMapping("api/empleado")
+@RequestMapping(value = "api/empleado")
 public class EmpleadoController {
 
   @Autowired
   EmpleadoRepository repository;
+
+  @Autowired
+  EmpresaRepository empresaSvc;
 
   @GetMapping("/list")
   public ResponseEntity<List<Empleado>> getAllEmpleados(@RequestParam(required = false) String name) {
@@ -68,15 +74,54 @@ public class EmpleadoController {
   @PostMapping("/create")
   public ResponseEntity<Empleado> createEmpleado(@RequestBody Empleado empleado) {
     try {
-      Empleado _empleado = repository.save(new Empleado()); // .save(new Empleado(empleado.getNombre(),
-                                                            // empleado.getApellido(), false));
+      Empresa _empresa = empresaSvc.findByIdEmpresa((long) 2);
+      Empleado newEmpleado = new Empleado();
+      newEmpleado.setEmpresa(_empresa);
+
+      newEmpleado.setNombre(empleado.getNombre());
+      newEmpleado.setApellido(empleado.getApellido());
+
+      newEmpleado.setNacimiento(empleado.getNacimiento());
+      newEmpleado.setDni(empleado.getDni());
+
+      newEmpleado.setGenero(empleado.getGenero());
+      newEmpleado.setEstadoCivil(empleado.getEstadoCivil());
+
+      newEmpleado.setFechaAlta(empleado.getFechaAlta());
+      newEmpleado.setCuil(empleado.getCuil());
+
+      if (empleado.getDomicilio() != null) {
+        newEmpleado.setDomicilio(empleado.getDomicilio());
+      }
+
+      if (empleado.getContactoList() != null) {
+        // List<Contacto> contactos = new ArrayList<>();
+        // contactos.addAll(empleado.getContactoList());
+        // System.out.println("CO::::: " + contactos);
+        newEmpleado.setContactoList(new ArrayList<Contacto>());
+        // newEmpleado.setContactoList(empleado.getContactoList());
+        newEmpleado.getContactoList().addAll(empleado.getContactoList());
+
+      }
+
+      newEmpleado.setCategoria(empleado.getCategoria());
+      newEmpleado.setPuesto(empleado.getPuesto());
+
+      newEmpleado.setInfo(empleado.getInfo());
+      newEmpleado.setEstado(PersonaEstado.ACTIVO);
+
+      Empleado _empleado = repository.save(newEmpleado);
+
+      System.out.println("Employe create ID: " + _empleado.getIdPersona());
+
       return new ResponseEntity<>(_empleado, HttpStatus.CREATED);
     } catch (Exception e) {
+      System.out.println(e);
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }
 
-  @PutMapping("/update/{id}")  
+  @PutMapping("/update/{id}")
   public ResponseEntity<Empleado> updateEmpleado(@PathVariable("id") long id, @RequestBody Empleado empleado) {
     System.out.println("ID::: " + id);
     Optional<Empleado> empleadoData = repository.findById(id);
@@ -84,7 +129,7 @@ public class EmpleadoController {
     if (empleadoData.isPresent()) {
       Empleado _empleado = empleadoData.get();
       _empleado.setNombre(empleado.getNombre());
-      _empleado.setApellido(empleado.getApellido());      
+      _empleado.setApellido(empleado.getApellido());
       _empleado.setGenero(empleado.getGenero());
       _empleado.setEstadoCivil(empleado.getEstadoCivil());
       _empleado.setDni(empleado.getDni());

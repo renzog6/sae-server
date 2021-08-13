@@ -8,12 +8,12 @@ import ar.nex.entity.Item;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Service
 public class ItemServiceImpl implements ItemService {
-    
-    List<Item> findByNombre(String nombre){
+
+    List<Item> findByNombre(String nombre) {
         return null;
     }
 }

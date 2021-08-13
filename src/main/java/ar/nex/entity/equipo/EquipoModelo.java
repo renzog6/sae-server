@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_modelo")
@@ -42,8 +42,8 @@ public class EquipoModelo implements Serializable {
     private String info;
 
     @JoinTable(name = "ped_repuesto_eq_modelo", joinColumns = {
-        @JoinColumn(name = "id_modelo", referencedColumnName = "id_modelo")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_repuesto", referencedColumnName = "id_repuesto")})
+            @JoinColumn(name = "id_modelo", referencedColumnName = "id_modelo") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_repuesto", referencedColumnName = "id_repuesto") })
     @ManyToMany
     private List<Repuesto> repuestoList;
 
@@ -145,7 +145,8 @@ public class EquipoModelo implements Serializable {
             return false;
         }
         EquipoModelo other = (EquipoModelo) object;
-        if ((this.idModelo == null && other.idModelo != null) || (this.idModelo != null && !this.idModelo.equals(other.idModelo))) {
+        if ((this.idModelo == null && other.idModelo != null)
+                || (this.idModelo != null && !this.idModelo.equals(other.idModelo))) {
             return false;
         }
         return true;
@@ -159,8 +160,8 @@ public class EquipoModelo implements Serializable {
     public String getStringTipoModelo() {
         if (this.tipo != null) {
             return String.join(" ", this.tipo.getNombre(), this.nombre);
-        }else{
+        } else {
             return String.join(" ", "{Sin Tipo}", this.nombre);
-        }                    
+        }
     }
 }

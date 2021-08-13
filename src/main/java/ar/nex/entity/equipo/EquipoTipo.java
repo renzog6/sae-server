@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_tipo")
@@ -30,27 +30,27 @@ public class EquipoTipo implements Serializable {
     @Basic(optional = false)
     @Column(name = "id_tipo")
     private Long idTipo;
-    
+
     @Column(name = "nombre")
     private String nombre;
-    
+
     @OneToMany(mappedBy = "tipo")
     private List<Equipo> equipoList;
-    
+
     @OneToMany(mappedBy = "tipo")
     private List<EquipoModelo> modeloList;
-    
+
     @JoinColumn(name = "id_categoria", referencedColumnName = "id_categoria")
     @ManyToOne
     private EquipoCategoria categoria;
 
     public EquipoTipo() {
     }
-    
+
     public EquipoTipo(String s) {
         this.nombre = s;
     }
-    
+
     public EquipoTipo(Long idTipo) {
         this.idTipo = idTipo;
     }
@@ -111,7 +111,8 @@ public class EquipoTipo implements Serializable {
             return false;
         }
         EquipoTipo other = (EquipoTipo) object;
-        if ((this.idTipo == null && other.idTipo != null) || (this.idTipo != null && !this.idTipo.equals(other.idTipo))) {
+        if ((this.idTipo == null && other.idTipo != null)
+                || (this.idTipo != null && !this.idTipo.equals(other.idTipo))) {
             return false;
         }
         return true;
@@ -119,7 +120,7 @@ public class EquipoTipo implements Serializable {
 
     @Override
     public String toString() {
-        return  this.nombre;
+        return this.nombre;
     }
-    
+
 }

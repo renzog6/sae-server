@@ -14,7 +14,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_categoria")
@@ -30,7 +30,7 @@ public class EquipoCategoria implements Serializable {
     private String nombre;
     @OneToMany(mappedBy = "categoria")
     private List<Equipo> equipoList;
-   
+
     @OneToMany(mappedBy = "categoria")
     private List<EquipoTipo> tipoList;
 
@@ -93,7 +93,8 @@ public class EquipoCategoria implements Serializable {
             return false;
         }
         EquipoCategoria other = (EquipoCategoria) object;
-        if ((this.idCategoria == null && other.idCategoria != null) || (this.idCategoria != null && !this.idCategoria.equals(other.idCategoria))) {
+        if ((this.idCategoria == null && other.idCategoria != null)
+                || (this.idCategoria != null && !this.idCategoria.equals(other.idCategoria))) {
             return false;
         }
         return true;

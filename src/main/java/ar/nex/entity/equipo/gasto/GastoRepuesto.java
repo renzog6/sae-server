@@ -8,16 +8,15 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_gasto_repuesto")
 @PrimaryKeyJoinColumn(name = "id_gasto")
-public class GastoRepuesto extends Gasto{
-    
+public class GastoRepuesto extends Gasto {
+
     @Column(name = "codigo_alt")
     private String codigoAlt;
-    
 
     public GastoRepuesto() {
         super();
@@ -65,5 +64,4 @@ public class GastoRepuesto extends Gasto{
         return "GastoRepuesto{" + "codigoAlt=" + codigoAlt + '}';
     }
 
-    
 }

@@ -15,7 +15,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "usr_grupo")
@@ -34,7 +34,7 @@ public class UsuarioGrupo implements Serializable {
     private Integer code;
     @Column(name = "info")
     private String info;
-    
+
     @OneToMany(mappedBy = "grupo")
     private List<Usuario> usuarioList;
 
@@ -100,7 +100,8 @@ public class UsuarioGrupo implements Serializable {
             return false;
         }
         UsuarioGrupo other = (UsuarioGrupo) object;
-        if ((this.idGrupo == null && other.idGrupo != null) || (this.idGrupo != null && !this.idGrupo.equals(other.idGrupo))) {
+        if ((this.idGrupo == null && other.idGrupo != null)
+                || (this.idGrupo != null && !this.idGrupo.equals(other.idGrupo))) {
             return false;
         }
         return true;
@@ -110,5 +111,5 @@ public class UsuarioGrupo implements Serializable {
     public String toString() {
         return "ar.nex.entity.UsrGrupo[ idGrupo=" + idGrupo + " ]";
     }
-    
+
 }

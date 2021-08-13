@@ -17,7 +17,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "rh_empleado")
@@ -26,7 +26,7 @@ public class Empleado extends Persona {
     @Column(name = "fecha_alta")
     @Temporal(TemporalType.DATE)
     private Date fechaAlta;
-   
+
     @Column(name = "fecha_baja")
     @Temporal(TemporalType.DATE)
     private Date fechaBaja;

@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_equipo")
@@ -36,7 +36,7 @@ public class Equipo implements Serializable {
     @JoinColumn(name = "seguro", referencedColumnName = "id_seguro")
     @ManyToOne
     private Seguro seguro;
-    
+
     @JoinColumn(name = "chofer", referencedColumnName = "id_persona")
     @OneToOne
     private Empleado chofer;
@@ -64,8 +64,8 @@ public class Equipo implements Serializable {
     private String info;
 
     @JoinTable(name = "ped_repuesto_equipo", joinColumns = {
-        @JoinColumn(name = "id_equipo", referencedColumnName = "id_equipo")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_repuesto", referencedColumnName = "id_repuesto")})
+            @JoinColumn(name = "id_equipo", referencedColumnName = "id_equipo") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_repuesto", referencedColumnName = "id_repuesto") })
     @ManyToMany
     private List<Repuesto> repuestoList;
 
@@ -289,7 +289,8 @@ public class Equipo implements Serializable {
             return false;
         }
         Equipo other = (Equipo) object;
-        if ((this.idEquipo == null && other.idEquipo != null) || (this.idEquipo != null && !this.idEquipo.equals(other.idEquipo))) {
+        if ((this.idEquipo == null && other.idEquipo != null)
+                || (this.idEquipo != null && !this.idEquipo.equals(other.idEquipo))) {
             return false;
         }
         return true;

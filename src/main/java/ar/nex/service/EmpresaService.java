@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 public interface EmpresaService {
 

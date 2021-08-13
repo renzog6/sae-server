@@ -17,7 +17,7 @@ import javax.persistence.TemporalType;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "eq_documentacion")
@@ -46,7 +46,7 @@ public class EquipoDocumentacion implements Serializable {
     private BigInteger seguro;
     @Column(name = "historial")
     private BigInteger historial;
-   
+
     @OneToOne(mappedBy = "documentacion")
     private Equipo equipo;
 
@@ -153,5 +153,5 @@ public class EquipoDocumentacion implements Serializable {
     public String toString() {
         return "ar.nex.entity.equipo.EquipoDocumentacion[ idDoc=" + idDoc + " ]";
     }
-    
+
 }

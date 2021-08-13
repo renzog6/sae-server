@@ -2,8 +2,8 @@ package ar.nex.service;
 
 /**
  *
- * @author Renzo O. Gorosito
+ * @author Renzo O. Gorosito O. Gorosito
  */
 public interface EmpleadoService {
-    
+
 }

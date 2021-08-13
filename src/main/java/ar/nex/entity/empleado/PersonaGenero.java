@@ -9,13 +9,11 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 public enum PersonaGenero {
 
-    MASCULINO(0, "Masculino"),
-    FEMENINO(1, "Femenino"),
-    OTRO(2, "Otro");
+    MASCULINO(0, "Masculino"), FEMENINO(1, "Femenino"), OTRO(2, "Otro");
 
     private final int id;
     private final String value;
@@ -32,23 +30,23 @@ public enum PersonaGenero {
     public String getNombre() {
         return value;
     }
-    
+
     @Override
     public String toString() {
         return value;
     }
 
     public static Stream<PersonaGenero> stream() {
-        return Stream.of(PersonaGenero.values()); 
+        return Stream.of(PersonaGenero.values());
     }
 
     @JsonCreator
-	public PersonaGenero decode(final String values) {		
+    public PersonaGenero decode(final String values) {
         return Stream.of(PersonaGenero.values()).filter(target -> target.value.equals(value)).findFirst().orElse(null);
-	}
-	
-	@JsonValue
-	public String getCode() {
-		return value;
-	}
+    }
+
+    @JsonValue
+    public String getCode() {
+        return value;
+    }
 }

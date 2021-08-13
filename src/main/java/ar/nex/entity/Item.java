@@ -18,14 +18,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "item")
 public class Item implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    
+
     @Id
     @Basic(optional = false)
     @Column(name = "uuid")

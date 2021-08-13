@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Renzo
+ * @author Renzo O. Gorosito
  */
 @Entity
 @Table(name = "empresa")
@@ -50,12 +50,12 @@ public class Empresa implements Serializable {
 
     @JsonIgnore
     @JoinTable(name = "empresa_rubro", joinColumns = {
-        @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_rubro", referencedColumnName = "id_rubro")})
+            @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_rubro", referencedColumnName = "id_rubro") })
     @ManyToMany
     private List<Rubro> rubroList;
 
-   @JsonManagedReference
+    @JsonManagedReference
     @ManyToMany(mappedBy = "empresaList")
     private List<Contacto> contactoList;
 
@@ -71,10 +71,10 @@ public class Empresa implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "empresa")
     private List<Equipo> equipoList;
 
-   @JsonManagedReference
+    @JsonManagedReference
     @JoinTable(name = "empresa_direccion", joinColumns = {
-        @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa")}, inverseJoinColumns = {
-        @JoinColumn(name = "id_direccion", referencedColumnName = "id_direccion")})
+            @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_direccion", referencedColumnName = "id_direccion") })
     @ManyToMany
     private List<Direccion> direccionList;
 
@@ -193,7 +193,8 @@ public class Empresa implements Serializable {
             return false;
         }
         Empresa other = (Empresa) object;
-        if ((this.idEmpresa == null && other.idEmpresa != null) || (this.idEmpresa != null && !this.idEmpresa.equals(other.idEmpresa))) {
+        if ((this.idEmpresa == null && other.idEmpresa != null)
+                || (this.idEmpresa != null && !this.idEmpresa.equals(other.idEmpresa))) {
             return false;
         }
         return true;
