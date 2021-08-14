@@ -22,6 +22,7 @@ import ar.nex.entity.empleado.Empleado;
 import ar.nex.entity.empleado.PersonaEstado;
 import ar.nex.entity.empresa.Empresa;
 import ar.nex.entity.ubicacion.Contacto;
+import ar.nex.repository.ContactoRepository;
 import ar.nex.repository.EmpleadoRepository;
 import ar.nex.repository.EmpresaRepository;
 
@@ -35,10 +36,13 @@ import ar.nex.repository.EmpresaRepository;
 public class EmpleadoController {
 
   @Autowired
-  EmpleadoRepository repository;
+  EmpleadoRepository empleadoRepo;
 
   @Autowired
   EmpresaRepository empresaSvc;
+
+  @Autowired
+  ContactoRepository contactoRepo;
 
   @GetMapping("/list")
   public ResponseEntity<List<Empleado>> getAllEmpleados(@RequestParam(required = false) String name) {
@@ -46,9 +50,9 @@ public class EmpleadoController {
       List<Empleado> lista = new ArrayList<Empleado>();
 
       if (name == null)
-        repository.findAll().forEach(lista::add);
+        empleadoRepo.findAll().forEach(lista::add);
       // else
-      // repository.findByName(name).forEach(lista::add);
+      // empleadoRepo.findByName(name).forEach(lista::add);
 
       if (lista.isEmpty()) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
@@ -62,7 +66,7 @@ public class EmpleadoController {
 
   @GetMapping("/{id}")
   public ResponseEntity<Empleado> getEmpleadoById(@PathVariable("id") long id) {
-    Optional<Empleado> empleadoData = repository.findById(id);
+    Optional<Empleado> empleadoData = empleadoRepo.findById(id);
 
     if (empleadoData.isPresent()) {
       return new ResponseEntity<>(empleadoData.get(), HttpStatus.OK);
@@ -94,15 +98,7 @@ public class EmpleadoController {
         newEmpleado.setDomicilio(empleado.getDomicilio());
       }
 
-      if (empleado.getContactoList() != null) {
-        // List<Contacto> contactos = new ArrayList<>();
-        // contactos.addAll(empleado.getContactoList());
-        // System.out.println("CO::::: " + contactos);
-        newEmpleado.setContactoList(new ArrayList<Contacto>());
-        // newEmpleado.setContactoList(empleado.getContactoList());
-        newEmpleado.getContactoList().addAll(empleado.getContactoList());
-
-      }
+      newEmpleado.setContactoList(new ArrayList<Contacto>());
 
       newEmpleado.setCategoria(empleado.getCategoria());
       newEmpleado.setPuesto(empleado.getPuesto());
@@ -110,7 +106,20 @@ public class EmpleadoController {
       newEmpleado.setInfo(empleado.getInfo());
       newEmpleado.setEstado(PersonaEstado.ACTIVO);
 
-      Empleado _empleado = repository.save(newEmpleado);
+      Empleado _empleado = empleadoRepo.save(newEmpleado);
+
+      if (empleado.getContactoList() != null) {
+        for (Contacto con : empleado.getContactoList()) {
+          Contacto _con = new Contacto(con.getNombre());
+          _con.setTipo(con.getTipo());
+          _con.setDato(con.getDato());
+          _con.setInfo(con.getInfo());
+          _con.setPersona(_empleado);
+          _empleado.getContactoList().add(_con);
+          empleadoRepo.save(_empleado);
+        }
+
+      }
 
       System.out.println("Employe create ID: " + _empleado.getIdPersona());
 
@@ -124,7 +133,7 @@ public class EmpleadoController {
   @PutMapping("/update/{id}")
   public ResponseEntity<Empleado> updateEmpleado(@PathVariable("id") long id, @RequestBody Empleado empleado) {
     System.out.println("ID::: " + id);
-    Optional<Empleado> empleadoData = repository.findById(id);
+    Optional<Empleado> empleadoData = empleadoRepo.findById(id);
 
     if (empleadoData.isPresent()) {
       Empleado _empleado = empleadoData.get();
@@ -138,7 +147,7 @@ public class EmpleadoController {
       _empleado.setFechaAlta(empleado.getFechaAlta());
       _empleado.setPuesto(empleado.getPuesto());
       _empleado.setCategoria(empleado.getCategoria());
-      return new ResponseEntity<>(repository.save(_empleado), HttpStatus.OK);
+      return new ResponseEntity<>(empleadoRepo.save(_empleado), HttpStatus.OK);
     } else {
       return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
     }
@@ -147,7 +156,7 @@ public class EmpleadoController {
   @DeleteMapping("/delete/{id}")
   public ResponseEntity<HttpStatus> deleteEmpleado(@PathVariable("id") long id) {
     try {
-      repository.deleteById(id);
+      empleadoRepo.deleteById(id);
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
@@ -157,7 +166,7 @@ public class EmpleadoController {
   @DeleteMapping("/delete")
   public ResponseEntity<HttpStatus> deleteAllEmpleados() {
     try {
-      repository.deleteAll();
+      empleadoRepo.deleteAll();
       return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     } catch (Exception e) {
       return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);

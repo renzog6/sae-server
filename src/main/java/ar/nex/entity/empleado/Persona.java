@@ -16,12 +16,14 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -83,10 +85,20 @@ public abstract class Persona implements Serializable {
 
     @Column(name = "info")
     private String info;
+    /**
+     * -----------------------------------------------------------------------
+     * -----------------------------------------------------------------------
+     * -----------------------------------------------------------------------
+     */
 
-    @ManyToMany(mappedBy = "personaList")
+    @JsonManagedReference
+    @OneToMany(mappedBy = "persona", cascade = CascadeType.ALL)
     private List<Contacto> contactoList;
-
+    /**
+     * -----------------------------------------------------------------------
+     * -----------------------------------------------------------------------
+     * -----------------------------------------------------------------------
+     */
     @JoinColumn(name = "domicilio", referencedColumnName = "id_direccion")
     @ManyToOne(cascade = { CascadeType.ALL })
     private Direccion domicilio;

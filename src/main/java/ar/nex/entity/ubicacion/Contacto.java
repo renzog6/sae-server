@@ -19,6 +19,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -48,13 +49,22 @@ public class Contacto implements Serializable {
     private String nombre;
     @Column(name = "info")
     private String info;
-
-    @JsonIgnore
+    /**
+     * -----------------------------------------------------------------------
+     * -----------------------------------------------------------------------
+     * -----------------------------------------------------------------------
+     */
+    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinTable(name = "rh_persona_contacto", joinColumns = {
             @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto") }, inverseJoinColumns = {
                     @JoinColumn(name = "id_persona", referencedColumnName = "id_persona") })
-    @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
-    private List<Persona> personaList;
+    private Persona persona;
+    /**
+     * -----------------------------------------------------------------------
+     * -----------------------------------------------------------------------
+     * -----------------------------------------------------------------------
+     */
 
     @JsonIgnore
     @JoinTable(name = "empresa_contacto", joinColumns = {
@@ -62,13 +72,6 @@ public class Contacto implements Serializable {
                     @JoinColumn(name = "id_empresa", referencedColumnName = "id_empresa") })
     @ManyToMany
     private List<Empresa> empresaList;
-
-    @JsonIgnore
-    @JoinTable(name = "rh_empleado_contacto", joinColumns = {
-            @JoinColumn(name = "id_contacto", referencedColumnName = "id_contacto") }, inverseJoinColumns = {
-                    @JoinColumn(name = "id_empleado", referencedColumnName = "id_persona") })
-    @ManyToMany
-    private List<Empleado> empleadoList;
 
     public Contacto() {
     }
@@ -122,12 +125,12 @@ public class Contacto implements Serializable {
     }
 
     @XmlTransient
-    public List<Persona> getPersonaList() {
-        return personaList;
+    public Persona getPersona() {
+        return this.persona;
     }
 
-    public void setPersonaList(List<Persona> personaList) {
-        this.personaList = personaList;
+    public void setPersona(Persona persona) {
+        this.persona = persona;
     }
 
     @XmlTransient
@@ -137,15 +140,6 @@ public class Contacto implements Serializable {
 
     public void setEmpresaList(List<Empresa> empresaList) {
         this.empresaList = empresaList;
-    }
-
-    @XmlTransient
-    public List<Empleado> getEmpleadoList() {
-        return empleadoList;
-    }
-
-    public void setEmpleadoList(List<Empleado> empleadoList) {
-        this.empleadoList = empleadoList;
     }
 
     @Override
