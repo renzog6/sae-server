@@ -3,16 +3,21 @@ package ar.nex.entity.empleado;
 import ar.nex.entity.Seguro;
 import ar.nex.entity.empresa.Empresa;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /**
@@ -48,6 +53,11 @@ public class Empleado extends Persona {
     @JoinColumn(name = "seguro", referencedColumnName = "id_seguro")
     @ManyToOne
     private Seguro seguro;
+
+    @JsonIgnore
+    // @JsonManagedReference
+    @OneToMany(mappedBy = "empleado", cascade = CascadeType.ALL)
+    private List<Vacacion> vacaciones;
 
     public Empleado() {
         super();
@@ -99,6 +109,14 @@ public class Empleado extends Persona {
 
     public void setSeguro(Seguro seguro) {
         this.seguro = seguro;
+    }
+
+    public List<Vacacion> getVacaciones() {
+        return vacaciones;
+    }
+
+    public void setVacaciones(List<Vacacion> vacaciones) {
+        this.vacaciones = vacaciones;
     }
 
     @Override

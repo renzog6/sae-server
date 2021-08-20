@@ -27,7 +27,7 @@ import ar.nex.repository.EmpleadoCategoriaRepository;
  */
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping(value = "api/empleado-categoria") // @RequestMapping("api/item")
+@RequestMapping(value = "api/empleado-categoria")
 public class EmpleadoCategoriaController {
 
   @Autowired

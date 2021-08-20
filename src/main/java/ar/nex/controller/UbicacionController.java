@@ -2,33 +2,24 @@ package ar.nex.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.nex.entity.empleado.Empleado;
-import ar.nex.entity.empleado.PersonaEstado;
 import ar.nex.entity.ubicacion.Direccion;
 import ar.nex.entity.ubicacion.Localidad;
 import ar.nex.repository.DireccionRepository;
-import ar.nex.repository.EmpleadoRepository;
 import ar.nex.repository.LocalidadRepository;
 
 /**
  *
- * @author Renzo O. Gorosito O. Gorosito
+ * @author Renzo O. Gorosito
  */
 @CrossOrigin(origins = "*")
 @RestController

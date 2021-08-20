@@ -51,10 +51,6 @@ public class Usuario implements Serializable {
     @ManyToOne
     private UsuarioGrupo grupo;
 
-    @JoinColumn(name = "id_usuario", referencedColumnName = "id_persona", insertable = false, updatable = false)
-    @OneToOne(optional = false)
-    private Persona persona;
-
     public Usuario() {
     }
 
@@ -125,14 +121,6 @@ public class Usuario implements Serializable {
 
     public void setGrupo(UsuarioGrupo grupo) {
         this.grupo = grupo;
-    }
-
-    public Persona getPersona() {
-        return persona;
-    }
-
-    public void setPersona(Persona persona) {
-        this.persona = persona;
     }
 
     @Override
