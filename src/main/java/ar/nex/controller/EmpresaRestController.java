@@ -27,7 +27,7 @@ public class EmpresaRestController {
         List<Empresa> list = new ArrayList<>();
         try {
             list = service.getAll();
-            System.out.println("ar.nex.controller.api.EmpresaRestController.getAll()>>>>> " + service.getAll().size());
+
         } catch (Exception e) {
             e.printStackTrace();
         }

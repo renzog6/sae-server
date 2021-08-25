@@ -1,0 +1,193 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 251658240 bytes for Failed to commit area from 0x0000000711400000 to 0x0000000720400000 of length 251658240.
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (t:/workspace/open/src/hotspot/os/windows/os_windows.cpp:3271), pid=8504, tid=15236
+#
+# JRE version:  (11.0.6+8) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (11.0.6+8-LTS, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -Dmaven.multiModuleProjectDirectory=c:\workspace-angular\sae-server org.apache.maven.wrapper.MavenWrapperMain com.github.ferstl:depgraph-maven-plugin:graph -DgraphFormat=text -DshowDuplicates -DshowConflicts -DshowVersions -DshowGroupIds -DoutputDirectory=c:\Users\Renzo\AppData\Roaming\Code\User\workspaceStorage\ec4be4d5b39b870c8c1a6af2b4060e13\vscjava.vscode-maven -DoutputFileName=03fe5ef6adef4c4c4a7c399b7fc0769f.deps.txt -f c:\workspace-angular\sae-server\pom.xml
+
+Host: Intel(R) Core(TM) i3-8100 CPU @ 3.60GHz, 4 cores, 14G,  Windows 10 , 64 bit Build 19041 (10.0.19041.1151)
+Time: Mon Aug 23 09:38:54 2021 Hora estándar de Argentina elapsed time: 0 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000259e4247000):  JavaThread "Unknown thread" [_thread_in_vm, id=15236, stack(0x000000695de00000,0x000000695df00000)]
+
+Stack: [0x000000695de00000,0x000000695df00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x63679a]
+V  [jvm.dll+0x7755bf]
+V  [jvm.dll+0x776c65]
+V  [jvm.dll+0x7772d3]
+V  [jvm.dll+0x25e7f8]
+V  [jvm.dll+0x633c4a]
+V  [jvm.dll+0x628625]
+V  [jvm.dll+0x314a7c]
+V  [jvm.dll+0x314902]
+V  [jvm.dll+0x31a176]
+V  [jvm.dll+0x36650f]
+V  [jvm.dll+0x365f30]
+V  [jvm.dll+0x2f1a78]
+V  [jvm.dll+0x2f2bf6]
+V  [jvm.dll+0x74e707]
+V  [jvm.dll+0x74fe7f]
+V  [jvm.dll+0x373349]
+V  [jvm.dll+0x734e5e]
+V  [jvm.dll+0x3e2b5d]
+V  [jvm.dll+0x3e4ef1]
+C  [java.exe+0x3607]
+C  [java.exe+0x178dc]
+C  [KERNEL32.DLL+0x17034]
+C  [ntdll.dll+0x52651]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00000259e284bcd0, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+  0x00000259e425e000 GCTaskThread "GC Thread#0" [stack: 0x000000695df00000,0x000000695e000000] [id=14864]
+  0x00000259e42b3000 ConcurrentGCThread "G1 Main Marker" [stack: 0x000000695e000000,0x000000695e100000] [id=5856]
+  0x00000259e42b4800 ConcurrentGCThread "G1 Conc#0" [stack: 0x000000695e100000,0x000000695e200000] [id=10816]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffc2d510207]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00000259e4244550] Heap_lock - owner thread: 0x00000259e4247000
+
+Heap address: 0x0000000711400000, size: 3820 MB, Compressed Oops mode: Non-zero based: 0x0000000711400000
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff603a10000 - 0x00007ff603a57000 	C:\Java\jdk11\bin\java.exe
+0x00007ffc89450000 - 0x00007ffc89645000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffc88da0000 - 0x00007ffc88e5d000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffc86db0000 - 0x00007ffc87079000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffc87c70000 - 0x00007ffc87d1c000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffc874b0000 - 0x00007ffc8754e000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffc87600000 - 0x00007ffc8769b000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffc88e60000 - 0x00007ffc88f8a000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffc88b10000 - 0x00007ffc88cb0000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffc86cb0000 - 0x00007ffc86cd2000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffc88cb0000 - 0x00007ffc88cda000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffc86b50000 - 0x00007ffc86c5b000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffc86ce0000 - 0x00007ffc86d7d000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffc87080000 - 0x00007ffc87180000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffc6a4b0000 - 0x00007ffc6a74a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e\COMCTL32.dll
+0x00007ffc81970000 - 0x00007ffc8197a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffc87480000 - 0x00007ffc874b0000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffc68070000 - 0x00007ffc68086000 	C:\Java\jdk11\bin\vcruntime140.dll
+0x00007ffc2ebf0000 - 0x00007ffc2ec9a000 	C:\Java\jdk11\bin\msvcp140.dll
+0x00007ffc2d210000 - 0x00007ffc2dd39000 	C:\Java\jdk11\bin\server\jvm.dll
+0x00007ffc87750000 - 0x00007ffc87758000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffc72d20000 - 0x00007ffc72d29000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffc750b0000 - 0x00007ffc750d7000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffc88360000 - 0x00007ffc883cb000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffc84a80000 - 0x00007ffc84a92000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffc66570000 - 0x00007ffc66581000 	C:\Java\jdk11\bin\verify.dll
+0x00007ffc73140000 - 0x00007ffc73324000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffc72da0000 - 0x00007ffc72dcc000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffc873f0000 - 0x00007ffc87473000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffc55910000 - 0x00007ffc55939000 	C:\Java\jdk11\bin\java.dll
+0x00007ffc66b80000 - 0x00007ffc66b96000 	C:\Java\jdk11\bin\zip.dll
+0x00007ffc75970000 - 0x00007ffc7597a000 	C:\Java\jdk11\bin\jimage.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Java\jdk11\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.1110_none_60b5254171f9507e;C:\Java\jdk11\bin\server
+
+VM Arguments:
+jvm_args: -Dmaven.multiModuleProjectDirectory=c:\workspace-angular\sae-server 
+java_command: org.apache.maven.wrapper.MavenWrapperMain com.github.ferstl:depgraph-maven-plugin:graph -DgraphFormat=text -DshowDuplicates -DshowConflicts -DshowVersions -DshowGroupIds -DoutputDirectory=c:\Users\Renzo\AppData\Roaming\Code\User\workspaceStorage\ec4be4d5b39b870c8c1a6af2b4060e13\vscjava.vscode-maven -DoutputFileName=03fe5ef6adef4c4c4a7c399b7fc0769f.deps.txt -f c:\workspace-angular\sae-server\pom.xml
+java_class_path (initial): c:\workspace-angular\sae-server\.mvn\wrapper\maven-wrapper.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 3                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 1                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 4                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 251658240                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 4005560320                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5830732                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122913754                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122913754                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Java\jdk11
+CLASSPATH=.;
+PATH=C:\Java\graalvm16\bin;C:\Java\graalvm16\bin;C:\Java\graalvm16\bin;C:\WINDOWS\System32;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Users\Renzo\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Inno Setup 6;C:\Users\Renzo\AppData\Roaming\Composer\vendor\bin;C:\Users\Renzo\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\Renzo\AppData\Roaming\npm
+USERNAME=Renzo
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 158 Stepping 11, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 19041 (10.0.19041.1151)
+
+CPU:total 4 (initial active 4) (4 cores per cpu, 1 threads per core) family 6 model 158 stepping 11, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, 3dnowpref, lzcnt, tsc, tscinvbit, bmi1, bmi2, adx, fma
+
+Memory: 4k page, system-wide physical 15273M (1697M free)
+TotalPageFile size 62377M (AvailPageFile size 82M)
+current process WorkingSet (physical memory assigned to process): 9M, peak: 9M
+current process commit charge ("private bytes"): 52M, peak: 291M
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (11.0.6+8-LTS) for windows-amd64 JRE (11.0.6+8-LTS), built on Dec 11 2019 09:17:57 by "mach5one" with MS VC++ 15.5 (VS2017)
+
+END.
