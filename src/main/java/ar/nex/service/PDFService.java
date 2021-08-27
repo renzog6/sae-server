@@ -34,9 +34,9 @@ public class PDFService {
 
             Resource resource = resourceLoader.getResource("classpath:notificacion_vacaciones.pdf");
             InputStream input = resource.getInputStream();
-            File file = resource.getFile();
+            // File file = resource.getFile();
 
-            PDDocument pDDocument = PDDocument.load(resource.getFile());
+            PDDocument pDDocument = PDDocument.load(input);
             PDAcroForm pDAcroForm = pDDocument.getDocumentCatalog().getAcroForm();
 
             PDField field = pDAcroForm.getField("fecha");
