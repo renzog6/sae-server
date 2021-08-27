@@ -32,6 +32,7 @@ import ar.nex.entity.empleado.Vacacion;
 import ar.nex.repository.EmpleadoRepository;
 import ar.nex.repository.VacacionRepository;
 import ar.nex.service.ExcelService;
+import ar.nex.service.PDFService;
 
 /**
  *
@@ -165,6 +166,9 @@ public class VacacionController {
     @Autowired
     ExcelService excelService;
 
+    @Autowired
+    PDFService pdfService;
+
     @GetMapping("download/{idEmpleado}")
     public ResponseEntity<Resource> downloadFiles(@PathVariable("idEmpleado") long id) {
         try {
@@ -201,4 +205,35 @@ public class VacacionController {
         }
 
     }
+
+    @GetMapping("downloadPDF/{idVacacion}")
+    public ResponseEntity<Resource> downloadPDF(@PathVariable("idVacacion") long id) {
+        try {
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+            String filename = "Error.pdf";
+
+            Optional<Vacacion> _vacacion = vacacionRepo.findById(id);
+            Vacacion vacacion = _vacacion.get();
+
+            Resource resource = new InputStreamResource(pdfService.getNotificacion(vacacion));
+            String nombreEmpleado = vacacion.getEmpleado().getApellido();
+            nombreEmpleado += " " + vacacion.getEmpleado().getNombre();
+            filename = "Notificacion_Vacaciones_" + nombreEmpleado + "_" + df.format(new Date()) + ".pdf";
+
+            HttpHeaders httpHeaders = new HttpHeaders();
+            httpHeaders.add("Access-Control-Expose-Headers", "Content-Disposition");
+            httpHeaders.add("Access-Control-Expose-Headers", "File-Name");
+            httpHeaders.add("File-Name", filename);
+            httpHeaders.add(CONTENT_DISPOSITION, "attachment;filename=" + filename);
+
+            return ResponseEntity.ok().contentType(MediaType.parseMediaType("application/pdf")).headers(httpHeaders)
+                    .body(resource);
+
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+    }
+
 }
