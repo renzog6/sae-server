@@ -1,16 +1,8 @@
 package ar.nex.entity.empresa;
 
-import ar.nex.entity.empleado.Empleado;
-import ar.nex.entity.equipo.Equipo;
-import ar.nex.entity.equipo.Pedido;
-import ar.nex.entity.equipo.Repuesto;
-import ar.nex.entity.ubicacion.Contacto;
-import ar.nex.entity.ubicacion.Direccion;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import java.io.Serializable;
 import java.util.List;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -24,6 +16,15 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlTransient;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import ar.nex.entity.empleado.Empleado;
+import ar.nex.entity.equipo.Equipo;
+import ar.nex.entity.equipo.Pedido;
+import ar.nex.entity.ubicacion.Contacto;
+import ar.nex.entity.ubicacion.Direccion;
 
 /**
  *

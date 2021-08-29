@@ -50,7 +50,8 @@ public class EmpleadoController {
       List<Empleado> lista = new ArrayList<Empleado>();
 
       if (name == null)
-        empleadoRepo.findAll().forEach(lista::add);
+        // empleadoRepo.findAll().forEach(lista::add);
+        lista = empleadoRepo.findByOrderByApellidoAsc(PersonaEstado.ACTIVO);
       // else
       // empleadoRepo.findByName(name).forEach(lista::add);
 
@@ -60,6 +61,7 @@ public class EmpleadoController {
 
       return new ResponseEntity<>(lista, HttpStatus.OK);
     } catch (Exception e) {
+      System.out.println(e);
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
   }

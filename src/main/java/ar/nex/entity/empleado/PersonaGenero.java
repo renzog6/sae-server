@@ -1,7 +1,5 @@
 package ar.nex.entity.empleado;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Stream;
 
 import com.fasterxml.jackson.annotation.JsonCreator;

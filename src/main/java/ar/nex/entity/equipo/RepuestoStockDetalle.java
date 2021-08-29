@@ -1,8 +1,8 @@
 package ar.nex.entity.equipo;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.Date;
+
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;

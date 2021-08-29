@@ -1,18 +1,12 @@
 package ar.nex.entity.empleado;
 
-import ar.nex.entity.Seguro;
-import ar.nex.entity.empresa.Empresa;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -21,6 +15,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import ar.nex.entity.Seguro;
+import ar.nex.entity.empresa.Empresa;
 
 /**
  *
