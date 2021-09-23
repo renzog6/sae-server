@@ -123,8 +123,6 @@ public class EmpleadoController {
 
       }
 
-      System.out.println("Employe create ID: " + _empleado.getIdPersona());
-
       return new ResponseEntity<>(_empleado, HttpStatus.CREATED);
     } catch (Exception e) {
       System.out.println(e);
@@ -134,7 +132,6 @@ public class EmpleadoController {
 
   @PutMapping("/update/{id}")
   public ResponseEntity<Empleado> updateEmpleado(@PathVariable("id") long id, @RequestBody Empleado empleado) {
-    System.out.println("ID::: " + id);
     Optional<Empleado> empleadoData = empleadoRepo.findById(id);
 
     if (empleadoData.isPresent()) {
@@ -155,6 +152,22 @@ public class EmpleadoController {
     }
   }
 
+  @PutMapping("/darBaja")
+  public ResponseEntity<Empleado> darBajaEmpleado(@RequestBody Empleado empleado) {
+    Optional<Empleado> empleadoData = empleadoRepo.findById(empleado.getIdPersona());
+
+    if (empleadoData.isPresent()) {
+      Empleado _empleado = empleadoData.get();
+      _empleado.setFechaBaja(empleado.getFechaBaja());
+      _empleado.setInfo(empleado.getInfo());
+      _empleado.setEstado(PersonaEstado.BAJA);
+
+      return new ResponseEntity<>(empleadoRepo.save(_empleado), HttpStatus.OK);
+    } else {
+      return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
+    }
+  }
+
   @DeleteMapping("/delete/{id}")
   public ResponseEntity<HttpStatus> deleteEmpleado(@PathVariable("id") long id) {
     try {
@@ -165,15 +178,13 @@ public class EmpleadoController {
     }
   }
 
-  @DeleteMapping("/delete")
-  public ResponseEntity<HttpStatus> deleteAllEmpleados() {
-    try {
-      empleadoRepo.deleteAll();
-      return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-  }
+  /*
+   * @DeleteMapping("/delete") public ResponseEntity<HttpStatus>
+   * deleteAllEmpleados() { try { empleadoRepo.deleteAll(); return new
+   * ResponseEntity<>(HttpStatus.NO_CONTENT); } catch (Exception e) { return new
+   * ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); }
+   * 
+   * }
+   */
 
 }

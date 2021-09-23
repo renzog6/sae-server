@@ -1,4 +1,4 @@
-package ar.nex.entity;
+package ar.nex.entity.user;
 
 import java.io.Serializable;
 import java.util.List;
@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -18,39 +20,39 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Renzo O. Gorosito
  */
 @Entity
-@Table(name = "usr_grupo")
+@Table(name = "usr_menu")
 @XmlRootElement
-public class UsuarioGrupo implements Serializable {
+public class UsuarioMenu implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "id_grupo")
-    private Long idGrupo;
+    @Column(name = "id_menu")
+    private Long idMenu;
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "code")
     private Integer code;
-    @Column(name = "info")
-    private String info;
-
-    @OneToMany(mappedBy = "grupo")
+    @JoinTable(name = "usr_usuario_menu", joinColumns = {
+            @JoinColumn(name = "id_menu", referencedColumnName = "id_menu") }, inverseJoinColumns = {
+                    @JoinColumn(name = "id_usuario", referencedColumnName = "id_usuario") })
+    @ManyToMany
     private List<Usuario> usuarioList;
 
-    public UsuarioGrupo() {
+    public UsuarioMenu() {
     }
 
-    public UsuarioGrupo(Long idGrupo) {
-        this.idGrupo = idGrupo;
+    public UsuarioMenu(Long idMenu) {
+        this.idMenu = idMenu;
     }
 
-    public Long getIdGrupo() {
-        return idGrupo;
+    public Long getIdMenu() {
+        return idMenu;
     }
 
-    public void setIdGrupo(Long idGrupo) {
-        this.idGrupo = idGrupo;
+    public void setIdMenu(Long idMenu) {
+        this.idMenu = idMenu;
     }
 
     public String getNombre() {
@@ -69,14 +71,6 @@ public class UsuarioGrupo implements Serializable {
         this.code = code;
     }
 
-    public String getInfo() {
-        return info;
-    }
-
-    public void setInfo(String info) {
-        this.info = info;
-    }
-
     @XmlTransient
     public List<Usuario> getUsuarioList() {
         return usuarioList;
@@ -89,19 +83,19 @@ public class UsuarioGrupo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idGrupo != null ? idGrupo.hashCode() : 0);
+        hash += (idMenu != null ? idMenu.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof UsuarioGrupo)) {
+        if (!(object instanceof UsuarioMenu)) {
             return false;
         }
-        UsuarioGrupo other = (UsuarioGrupo) object;
-        if ((this.idGrupo == null && other.idGrupo != null)
-                || (this.idGrupo != null && !this.idGrupo.equals(other.idGrupo))) {
+        UsuarioMenu other = (UsuarioMenu) object;
+        if ((this.idMenu == null && other.idMenu != null)
+                || (this.idMenu != null && !this.idMenu.equals(other.idMenu))) {
             return false;
         }
         return true;
@@ -109,7 +103,7 @@ public class UsuarioGrupo implements Serializable {
 
     @Override
     public String toString() {
-        return "ar.nex.entity.UsrGrupo[ idGrupo=" + idGrupo + " ]";
+        return "ar.nex.entity.UsrMenu[ idMenu=" + idMenu + " ]";
     }
 
 }

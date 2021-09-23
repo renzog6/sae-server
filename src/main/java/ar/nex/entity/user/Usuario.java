@@ -1,4 +1,4 @@
-package ar.nex.entity;
+package ar.nex.entity.user;
 
 import java.io.Serializable;
 import java.util.List;

@@ -118,6 +118,12 @@ public class Empleado extends Persona {
         this.vacaciones = vacaciones;
     }
 
+    /*
+     * public int getDiasDisponibles() { int dias = 0; try { if (vacaciones != null)
+     * { for (Vacacion v : this.vacaciones) { dias += v.getDias(); } } } catch
+     * (Exception e) { return -1; } return dias; }
+     */
+
     @Override
     public int hashCode() {
         int hash = 3;
