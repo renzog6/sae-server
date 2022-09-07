@@ -38,10 +38,12 @@ public class ItemController {
     try {
       List<Item> lista = new ArrayList<Item>();
 
+      System.out.println("name: " + name);
+
       if (name == null)
         repository.findAll().forEach(lista::add);
-      // else
-      // repository.findByName(name).forEach(lista::add);
+      else
+        repository.findByNombreContains(name).forEach(lista::add);
 
       if (lista.isEmpty()) {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);

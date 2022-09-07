@@ -13,7 +13,7 @@ import ar.nex.entity.Item;
 @Service
 public class ItemServiceImpl implements ItemService {
 
-    List<Item> findByNombre(String nombre) {
+    List<Item> findByName(String name) {
         return null;
     }
 }
